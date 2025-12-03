@@ -298,7 +298,7 @@ export default function Home() {
       {/* Hero */}
       <Hero />
 
-      <div className="flex flex-col gap-20 w-full">
+      <div className="flex flex-col gap-5 md:gap-20 w-full">
 
         {/* ABOUT SECTION */}
         <div
