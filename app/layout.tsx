@@ -1,16 +1,36 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
+// import Providers from "./providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+// Custom Fonts
+const gothic = localFont({
+  src: [
+    { path: "../public/fonts/Engravers' Gothic Regular.otf", weight: "400" },
+    { path: "../public/fonts/Engravers' Gothic Regular.otf", weight: "700" },
+  ],
+  variable: "--font-gothic",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const alilato = localFont({
+  src: [
+    { path: "../public/fonts/fonnts.com-Alilato_Extra_Light.ttf", weight: "400" },
+    { path: "../public/fonts/fonnts.com-Alilato_Extra_Light.ttf", weight: "600" },
+  ],
+  variable: "--font-alilato",
+  display: "swap",
 });
+
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${gothic.variable} ${alilato.variable} antialiased`}
       >
         {children}
       </body>

@@ -1,65 +1,483 @@
+// "use client"
+
+// import Image from "next/image";
+// import Hero from "../components/hero"
+// import Header from "@/components/header";
+// import { useRouter } from "next/navigation";
+
+// export default function Home() {
+//   const router = useRouter();
+//   // Array of featured project data
+//   const featuredProjects = [
+//     {
+//       title: "Lagos Office Complex",
+//       description: "Construction of a modern 10-story office tower with advanced cladding.",
+//       imageSrc: "/projects/IMG-20251202-WA0006.jpg", // Placeholder path
+//     },
+//     {
+//       title: "Residential Towers",
+//       description: "Full design and construction of twin luxury residential skyscrapers.",
+//       imageSrc: "/projects/IMG-20251130-WA0006.jpg", // Placeholder path
+//     },
+//     {
+//       title: "Industrial Warehouse",
+//       description: "Built-to-suit logistics warehouse, covering over 50,000 square meters.",
+//       imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.45_56083dca.jpg", // Placeholder path
+//     },
+//     {
+//       title: "Highway Bypass",
+//       description: "Civil engineering project involving 15km of road and bridge construction.",
+//       imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.49_219bac9d.jpg", // Placeholder path
+//     },
+//     {
+//       title: "University Hall",
+//       description: "Construction of a state-of-the-art auditorium and lecture hall complex.",
+//       imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.24.30_d8cf2518.jpg", // Placeholder path
+//     },
+//     {
+//       title: "Commercial Retail Center",
+//       description: "Development of a multi-level shopping and retail facility in Abuja.",
+//       imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.16.17_916e2234.jpg", // Placeholder path
+//     },
+//     {
+//       title: "Hospital Extension",
+//       description: "Addition of a new wing to an existing hospital, specializing in facade installation.",
+//       imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.42_0f11f8f1.jpg", // Placeholder path
+//     },
+//     {
+//       title: "Cladding Refurbishment",
+//       description: "Complete overhaul of exterior aluminium cladding on an older high-rise.",
+//       imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.44_3da46350.jpg", // Placeholder path
+//     },
+//   ];
+
+//   return (
+//     <div className="flex bg-[#ececec] font-alilato flex-col w-screen min-h-screen ">
+
+//       {/* Header/Navigation (Unchanged) */}
+//       <Header/>
+
+//       {/* Hero (Unchanged) */}
+//       <Hero/>
+
+//       <div className="flex flex-col gap-5">
+//         {/* About Us (Unchanged) */}
+//         <div id="about" className="bg-white mx-auto px-48 flex items-center gap-20">
+//           <div className="flex flex-col items-start text-black gap-5">
+//             {/* About Heading with Hover Line */}
+//             <div className="flex relative group space-y-3 w-full">
+//               <h1 className="text-[#543e36] text-4xl">About</h1>
+//               <div className="absolute bottom-0 left-0 h-px bg-[#543e36]/50 transition-all duration-300 w-1/2 "></div>
+//             </div>
+//             <h2>Efemena Construction & Cladding Ltd is a leading building and civil engineering contracting firm in Nigeria, with over 90 years of experience and a solid reputation built on its history, professionalism and commitment to service excellence.</h2>
+            
+//             {/* Learn More Button with Hover Line */}
+//             <div className="relative group">
+//               <button className="text-xl font-bold">Learn more</button>
+//               <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black transition-all duration-300 group-hover:w-full"></div>
+//             </div>
+//           </div>
+//           <div className="w-full flex relative">
+//             <div className="absolute top-0 right-0 bg-[#543e36]/80 h-5 w-48"></div>
+//             <div className="absolute bottom-0 left-0 bg-[#543e36]/80 h-5 w-48"></div>
+//             <Image
+//               src={"/IMG-20251019-WA0041.jpg"}
+//               alt="efemena-construction-flyer"
+//               width={1400}
+//               height={1400}
+//               className="w-[950px] h-auto"
+//             />
+//           </div>
+//         </div>
+
+//         {/* Our Services (Unchanged) */}
+//         <div id="services" className="bg-white mx-auto px-48 flex items-center gap-20">
+//           <div className="w-full flex relative">
+//             <div className="absolute top-0 right-0 bg-[#543e36]/80 h-5 w-48"></div>
+//             <div className="absolute bottom-0 left-0 bg-[#543e36]/80 h-5 w-48"></div>
+//             <Image
+//               src={"/projects/WhatsApp Image 2025-11-30 at 09.11.17_fff1a717.jpg"}
+//               alt="efemena-construction-flyer"
+//               width={1400}
+//               height={1400}
+//               className="w-[950px] h-auto"
+//             />
+//           </div>
+          
+//           <div className="flex flex-col items-start text-black gap-5">
+//             {/* Services Heading with Hover Line */}
+//             <div className="flex relative group space-y-3 w-full">
+//               <h1 className="text-[#543e36] text-4xl">Our Services</h1>
+//               <div className="absolute bottom-0 left-0 h-px bg-[#543e36]/50 transition-all duration-300 w-1/2 "></div>
+//             </div>
+//             <h2>Efemena Construction & Cladding Ltd is a leading building and civil engineering contracting firm in Nigeria, with over 90 years of experience and a solid reputation built on its history, professionalism and commitment to service excellence.</h2>
+            
+//             {/* Service Buttons */}
+//             <div className="relative group">
+//               <button className="text-xl font-extrabold">Construction</button>
+//               <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black transition-all duration-300 group-hover:w-full"></div>
+//             </div>
+
+//             <div className="relative group">
+//               <button className="text-xl font-extrabold">Cladding</button>
+//               <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black transition-all duration-300 group-hover:w-full"></div>
+//             </div>
+
+//             <div className="relative group">
+//               <button className="text-xl font-extrabold">Renovation</button>
+//               <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black transition-all duration-300 group-hover:w-full"></div>
+//             </div>
+//           </div>
+          
+//         </div>
+
+//         {/* Featured Projects (New Content) */}
+//         <div className="flex flex-col bg-white w-full py-20 px-48 gap-10">
+//           {/* Section Heading */}
+//           <h1 className="text-[#543e36] text-4xl font-semibold border-b border-[#543e36]/20 pb-4">
+//             Featured Projects
+//           </h1>
+
+//           {/* Projects Grid */}
+//           <div className="grid grid-cols-4 gap-10">
+//             {featuredProjects.map((project, index) => (
+//               <div
+//                 key={index}
+//                 className="flex flex-col gap-3 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-[#fefefe]"
+//               >
+//                 {/* Project Image */}
+//                 <div className="relative w-full h-40">
+//                   <Image
+//                     src={project.imageSrc}
+//                     alt={project.title}
+//                     layout="fill"
+//                     objectFit="cover"
+//                     className="transition-transform duration-500 hover:scale-105"
+//                   />
+//                 </div>
+
+//                 {/* Project Info */}
+//                 <div className="p-4 flex flex-col gap-2">
+//                   <h2 className="text-lg font-bold text-black">{project.title}</h2>
+//                   <p className="text-sm text-gray-600 line-clamp-2">{project.description}</p>
+//                 </div>
+//               </div>
+//             ))}
+
+//             {/* Centered Button */}
+//             <div className="flex w-full justify-center col-span-4">
+//               <button
+//                 onClick={() => router.push("/projects")}
+//                 className="px-8 py-4 bg-[#543e36] text-white text-sm cursor-pointer font-bold tracking-widest shadow-lg hover:bg-white hover:text-[#543e36] transition-colors duration-300"
+//               >
+//                 VIEW ALL PROJECTS
+//               </button>
+//             </div>
+//           </div>
+
+//         </div>
+
+//         {/* Footer/Contact */}
+//         <div className="w-full">
+
+//           {/* Contact */}
+//           <div
+//             className="relative w-full h-[60vh] bg-cover bg-center flex flex-col items-center justify-center text-center px-6"
+//             style={{
+//               backgroundImage: "url('/projects/IMG-20251130-WA0008.jpg')",
+//             }}
+//           >
+//             {/* Dark Overlay */}
+//             <div className="absolute inset-0 bg-black/50"></div>
+
+//             {/* Centered Content */}
+//             <div className="relative z-10 flex flex-col items-center justify-center gap-6 max-w-6xl">
+//               <h1 className="text-white text-lg md:text-2xl font-semibold leading-relaxed">
+//                 Whether it be a project of small or large scale, private or commercial, 
+//                 we have the resources and the knowledge to deliver services of unmatched 
+//                 standard and quality. This is why we still remain at the forefront in our 
+//                 field, after nearly a century of successful activity.
+//               </h1>
+
+//               <button
+//                 onClick={() => router.push("/about-us")}
+//                 className="px-10 py-4 bg-[#543e36] text-white text-sm font-bold tracking-widest shadow-lg 
+//                           hover:bg-white hover:text-[#543e36] cursor-pointer transition-colors duration-300"
+//               >
+//                 CONTACT US
+//               </button>
+//             </div>
+//           </div>
+
+//           {/* Footer */}
+//           <div className="w-full bg-[#543e36] text-white py-6 text-center">
+//             <p className="text-sm opacity-80">© 2025 Efemena Construction & Cladding. All rights reserved.</p>
+//           </div>
+
+//         </div>
+
+//       </div>
+      
+//     </div>
+//   );
+// }
+
+"use client";
+
 import Image from "next/image";
+import Hero from "../components/hero";
+import Header from "@/components/header";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  const featuredProjects = [
+    {
+      title: "Lagos Office Complex",
+      description:
+        "Construction of a modern 10-story office tower with advanced cladding.",
+      imageSrc: "/projects/IMG-20251202-WA0006.jpg",
+    },
+    {
+      title: "Residential Towers",
+      description:
+        "Full design and construction of twin luxury residential skyscrapers.",
+      imageSrc: "/projects/IMG-20251130-WA0006.jpg",
+    },
+    {
+      title: "Industrial Warehouse",
+      description:
+        "Built-to-suit logistics warehouse, covering over 50,000 square meters.",
+      imageSrc:
+        "/projects/WhatsApp Image 2025-11-30 at 09.20.45_56083dca.jpg",
+    },
+    {
+      title: "Highway Bypass",
+      description:
+        "Civil engineering project involving 15km of road and bridge construction.",
+      imageSrc:
+        "/projects/WhatsApp Image 2025-11-30 at 09.20.49_219bac9d.jpg",
+    },
+    {
+      title: "University Hall",
+      description:
+        "Construction of a state-of-the-art auditorium and lecture hall complex.",
+      imageSrc:
+        "/projects/WhatsApp Image 2025-11-30 at 09.24.30_d8cf2518.jpg",
+    },
+    {
+      title: "Commercial Retail Center",
+      description:
+        "Development of a multi-level shopping and retail facility in Abuja.",
+      imageSrc:
+        "/projects/WhatsApp Image 2025-11-30 at 09.16.17_916e2234.jpg",
+    },
+    {
+      title: "Hospital Extension",
+      description:
+        "Addition of a new wing to an existing hospital, specializing in facade installation.",
+      imageSrc:
+        "/projects/WhatsApp Image 2025-11-30 at 09.20.42_0f11f8f1.jpg",
+    },
+    {
+      title: "Cladding Refurbishment",
+      description:
+        "Complete overhaul of exterior aluminium cladding on an older high-rise.",
+      imageSrc:
+        "/projects/WhatsApp Image 2025-11-30 at 09.20.44_3da46350.jpg",
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="flex flex-col bg-[#ececec] min-h-screen w-full font-alilato">
+
+      {/* Header */}
+      <Header />
+
+      {/* Hero */}
+      <Hero />
+
+      <div className="flex flex-col gap-20 w-full">
+
+        {/* ABOUT SECTION */}
+        <div
+          id="about"
+          className="
+            bg-white w-full 
+            px-6 sm:px-10 md:px-16 lg:px-24 xl:px-40 
+            py-16 
+            flex flex-col lg:flex-row items-center gap-10 lg:gap-20
+        "
+        >
+          {/* Left Content */}
+          <div className="flex flex-col items-start text-black gap-5 w-full">
+            <div className="relative group w-full">
+              <h1 className="text-[#543e36] text-3xl md:text-4xl">About</h1>
+              <div className="absolute bottom-0 left-0 h-px bg-[#543e36]/50 w-1/2"></div>
+            </div>
+
+            <h2 className="text-base md:text-lg leading-relaxed">
+              Efemena Construction & Cladding Ltd is a leading building and
+              civil engineering contracting firm in Nigeria, with over 90
+              years of experience and a solid reputation built on its
+              history, professionalism and commitment to service excellence.
+            </h2>
+
+            <div className="relative group">
+              <button className="text-lg md:text-xl font-bold">
+                Learn more
+              </button>
+              <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black group-hover:w-full transition-all duration-300"></div>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="w-full relative">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/IMG-20251019-WA0041.jpg"
+              alt="efemena"
+              width={1400}
+              height={1400}
+              className="w-full h-auto rounded-md"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+
+        {/* SERVICES SECTION */}
+        <div
+          id="services"
+          className="
+            bg-white w-full 
+            px-6 sm:px-10 md:px-16 lg:px-24 xl:px-40 
+            py-16 
+            flex flex-col lg:flex-row items-center gap-10 lg:gap-20
+        "
+        >
+          {/* Image */}
+          <div className="w-full relative">
+            <Image
+              src="/projects/WhatsApp Image 2025-11-30 at 09.11.17_fff1a717.jpg"
+              alt="services"
+              width={1400}
+              height={1400}
+              className="w-full h-auto rounded-md"
+            />
+          </div>
+
+          {/* Text */}
+          <div className="flex flex-col items-start text-black gap-5 w-full">
+            <div className="relative group w-full">
+              <h1 className="text-[#543e36] text-3xl md:text-4xl">
+                Our Services
+              </h1>
+              <div className="absolute bottom-0 left-0 h-px bg-[#543e36]/50 w-1/2"></div>
+            </div>
+
+            <h2 className="text-base md:text-lg leading-relaxed">
+              Efemena Construction & Cladding Ltd delivers top-tier building
+              and civil engineering services backed by unparalleled expertise.
+            </h2>
+
+            {["Construction", "Cladding", "Renovation"].map((service) => (
+              <div className="relative group" key={service}>
+                <button className="text-xl font-extrabold">{service}</button>
+                <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black group-hover:w-full transition-all duration-300"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* FEATURED PROJECTS */}
+        <div
+          className="
+            w-full bg-white 
+            py-20 
+            px-6 sm:px-10 md:px-16 lg:px-24 xl:px-40 
+            flex flex-col gap-10
+        "
+        >
+          <h1 className="text-[#543e36] text-3xl md:text-4xl font-semibold border-b border-[#543e36]/20 pb-4">
+            Featured Projects
+          </h1>
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            {featuredProjects.map((project, index) => (
+              <div
+                key={index}
+                className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white"
+              >
+                <div className="relative w-full h-48">
+                  <Image
+                    src={project.imageSrc}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="p-4 flex flex-col gap-2">
+                  <h2 className="text-lg font-bold">{project.title}</h2>
+                  <p className="text-sm text-gray-600 line-clamp-2">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Button */}
+          <div className="flex justify-center">
+            <button
+              onClick={() => router.push("/projects")}
+              className="px-8 py-4 bg-[#543e36] text-white text-sm font-bold tracking-widest shadow-lg hover:bg-white hover:text-[#543e36] transition-colors duration-300"
+            >
+              VIEW ALL PROJECTS
+            </button>
+          </div>
+        </div>
+
+        {/* CONTACT SECTION */}
+        <div className="w-full">
+          <div
+            className="
+              relative h-[50vh] md:h-[60vh] 
+              bg-cover bg-center 
+              flex flex-col items-center justify-center 
+              px-6
+            "
+            style={{
+              backgroundImage:
+                "url('/projects/IMG-20251130-WA0008.jpg')",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/50"></div>
+
+            <div className="relative z-10 max-w-5xl flex flex-col items-center gap-6">
+              <h1 className="text-white text-base sm:text-lg md:text-2xl text-center leading-relaxed">
+                Whether it be a project of small or large scale, private or
+                commercial, we have the resources and knowledge to deliver
+                unmatched quality.
+              </h1>
+
+              <button
+                onClick={() => router.push("/about-us")}
+                className="px-10 py-4 bg-[#543e36] text-white text-sm font-bold tracking-widest hover:bg-white hover:text-[#543e36] transition-colors duration-300"
+              >
+                CONTACT US
+              </button>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="w-full bg-[#543e36] text-white py-6 text-center">
+            <p className="text-sm opacity-80">
+              © 2025 Efemena Construction & Cladding. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
