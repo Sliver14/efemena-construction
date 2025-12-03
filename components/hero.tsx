@@ -152,7 +152,7 @@ const router = useRouter();
 
 
   return (
-    <div className="relative flex font-sans uppercase flex-col w-screen min-h-screen overflow-hidden bg-black text-white">
+    <div className="relative flex font-sans uppercase flex-col w-full min-h-screen overflow-hidden bg-black text-white">
       
       {/* Background Slides Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">

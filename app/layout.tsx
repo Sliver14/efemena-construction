@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${gothic.variable} ${alilato.variable} antialiased`}
+        className={`${gothic.variable} ${alilato.variable} antialiased overflow-x-hidden`}
       >
         {children}
       </body>
