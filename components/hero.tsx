@@ -152,7 +152,9 @@ const router = useRouter();
 
 
   return (
-    <div className="relative flex font-sans uppercase flex-col w-full min-h-screen overflow-hidden bg-black text-white">
+    <div 
+    id="hero"
+    className="relative flex font-sans justify-center uppercase flex-col w-full h-[60vh] md:min-h-screen overflow-hidden bg-black text-white">
       
       {/* Background Slides Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -177,8 +179,7 @@ const router = useRouter();
       {/* HERO CONTENT - Centered and Responsive */}
       <div className="
         relative z-10 flex flex-col 
-        h-screen 
-        justify-center 
+        h-[50vh] md:h-screen        justify-center 
         w-full 
         px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 
         pointer-events-none
@@ -222,7 +223,9 @@ const router = useRouter();
             className={`flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 ${ctaClass}`}
             style={{ transitionDelay: showTextContent ? ctaDelay : '0ms' }}
           >
-            <button className="
+            <button 
+            onClick={() => router.push("/contact-us")}
+            className="
               px-8 py-4 
               bg-[#543e36] text-white 
               text-xs sm:text-sm 
@@ -255,26 +258,70 @@ const router = useRouter();
 
 
       {/* ARROWS */}
+      {/* LEFT ARROW */}
       <button
         onClick={prevSlide}
         disabled={isAnimating}
-        // Using Unicode arrows as requested
-        className="absolute left-0 top-1/2 -translate-y-1/2 text-white/60 text-5xl px-5 py-12 bg-black/40 transition-all z-20 cursor-pointer disabled:opacity-30"
+        className="
+          absolute left-0 top-1/2 -translate-y-1/2 
+          text-white/60 
+          bg-black/40 
+          transition-all z-20 cursor-pointer disabled:opacity-30
+
+          px-3 py-5      /* mobile */
+          md:px-5 md:py-12 /* medium screens */
+        "
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg> {/* Left Arrow */}
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          className="
+            w-4 h-4        /* small screens */
+            md:w-12 md:h-12 /* tablets */
+            lg:w-20 lg:h-20 /* desktops */
+            rotate-180      /* make it left arrow */
+          "
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
       </button>
 
+      {/* RIGHT ARROW */}
       <button
         onClick={nextSlide}
         disabled={isAnimating}
-        // Using Unicode arrows as requested
-        className="absolute right-0 top-1/2 -translate-y-1/2 text-white/60 text-5xl px-5 py-12 bg-black/40 transition-all z-20 cursor-pointer disabled:opacity-30"
+        className="
+          absolute right-0 top-1/2 -translate-y-1/2 
+          text-white/60 
+          bg-black/40 
+          transition-all z-20 cursor-pointer disabled:opacity-30
+
+          px-3 py-5
+          md:px-5 md:py-12
+        "
       >
-       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg> {/* Right Arrow */}
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          className="
+            w-4 h-4
+            md:w-12 md:h-12
+            lg:w-20 lg:h-20
+          "
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
       </button>
 
+
       {/* INDICATORS */}
-      <div className="absolute bottom-12 w-full flex justify-center gap-4 z-20">
+      <div className="absolute bottom-5 md:bottom-12 w-full flex justify-center gap-4 z-20">
         {slides.map((_, index) => (
           <button
             key={index}

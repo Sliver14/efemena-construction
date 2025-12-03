@@ -310,15 +310,50 @@ export default function Page() {
           </div>
         )}
 
-        {!hasMore && visibleProjects.length > 0 && (
+        {/* {!hasMore && visibleProjects.length > 0 && (
           <p className="text-center py-12 text-gray-500">You’ve reached the end!</p>
-        )}
+        )} */}
       </div>
 
-      {/* FOOTER */}
-      <div className="w-full bg-[#543e36] text-white py-8 text-center">
-        <p className="text-sm opacity-80">© 2025 Efemena Construction & Cladding. All rights reserved.</p>
-      </div>
+        {/* CONTACT SECTION */}
+        <div className="w-full">
+          <div
+            className="
+              relative h-[50vh] md:h-[60vh] 
+              bg-cover bg-center 
+              flex flex-col items-center justify-center 
+              px-6
+            "
+            style={{
+              backgroundImage:
+                "url('/projects/IMG-20251130-WA0008.jpg')",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/50"></div>
+
+            <div className="relative z-10 max-w-5xl flex flex-col items-center gap-6">
+              <h1 className="text-white text-base sm:text-lg md:text-2xl text-center leading-relaxed">
+                Whether it be a project of small or large scale, private or
+                commercial, we have the resources and knowledge to deliver
+                unmatched quality.
+              </h1>
+
+              <button
+                onClick={() => router.push("/contact-us")}
+                className="px-10 py-4 bg-[#543e36] text-white text-sm font-bold tracking-widest hover:bg-white hover:text-[#543e36] transition-colors duration-300"
+              >
+                START YOUR PROJECT
+              </button>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="w-full bg-[#543e36] text-white py-6 text-center">
+            <p className="text-sm opacity-80">
+              © 2025 Efemena Construction & Cladding. All rights reserved.
+            </p>
+          </div>
+        </div>
     </div>
   );
 }

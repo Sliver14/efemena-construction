@@ -54,7 +54,7 @@ export default function Header() {
             alt="efemena-logo"
             width={128} // Corresponds to md:w-32 (128px)
             height={48} //  Adjust height as needed for aspect ratio
-            className="w-20 sm:w-28 md:w-32 h-auto cursor-pointer"
+            className="w-16 sm:w-20 md:w-32 h-auto cursor-pointer"
             onClick={handleLogoClick}
           />
           <h1 className="hidden md:block text-black text-xl font-sans md:text-2xl font-extrabold tracking-tight">
@@ -65,11 +65,15 @@ export default function Header() {
         {/* Social Icons (Adjusted size for better mobile target) */}
         <div className="flex gap-4 sm:gap-6">
           {/* Use standard <a> tag instead of Next.js Link */}
-          <a href="#" aria-label="LinkedIn">
+          <a 
+          href="https://wa.me/2349159256954?text=Hello!%20I%20am%20interested%20in%20your%20services" 
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp">
             {/* Using placeholder for social icons */}
             <Image
-              src="/linkedin-logo.svg"
-              alt="linkedin"
+              src="/whatsapp-svgrepo-com.svg"
+              alt="whatsapp"
               width={32}
               height={32}
               className="w-8 h-8"
