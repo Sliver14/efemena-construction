@@ -30,7 +30,7 @@ function Page() {
               <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in Touch</h2>
               <p className="text-gray-600 leading-relaxed">
                 Have a project in mind? Need cladding or construction services? 
-                Reach out to us — we're here to help bring your vision to life.
+                Reach out to us — we&apos;re here to help bring your vision to life.
               </p>
             </div>
 

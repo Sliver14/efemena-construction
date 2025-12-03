@@ -14,7 +14,14 @@ import Header from "@/components/header";
 // ──────────────────────────────────────────────────────────────
 // MediaContent – Perfect aspect ratio, auto poster, no stretch
 // ──────────────────────────────────────────────────────────────
-const MediaContent = ({ project }: { project: any }) => {
+interface Project {
+  title: string;
+  category: string;
+  imageSrc: string;
+  videoSrc?: string;
+}
+
+const MediaContent = ({ project }: { project: Project }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -30,18 +37,30 @@ const MediaContent = ({ project }: { project: any }) => {
     setIsPlaying(!isPlaying);
   };
 
+  useEffect(() => {
+    if (!videoRef.current) return;
+    const video = videoRef.current;
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+    return () => {
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
+    };
+  }, []);
+
   // Desktop hover play
   useEffect(() => {
     if (!videoRef.current || isTouchDevice) return;
-    if (isHovered && !isPlaying) {
+
+    if (isHovered) {
       videoRef.current.play();
-      setIsPlaying(true);
-    } else if (!isHovered && isPlaying) {
+    } else {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
-      setIsPlaying(false);
     }
-  }, [isHovered, isPlaying, isTouchDevice]);
+  }, [isHovered, isTouchDevice]);
 
   // When video metadata loads → we know real aspect ratio
   useEffect(() => {
@@ -131,43 +150,43 @@ const MediaContent = ({ project }: { project: any }) => {
 // ──────────────────────────────────────────────────────────────
 // Main Page Component
 // ──────────────────────────────────────────────────────────────
-export default function Page() {
-  const allProjects = [
-    { title: "Luxury Residential Building", category: "Residential", imageSrc: "/projects/IMG-20251130-WA0007.jpg" },
-    { title: "Modern Duplex (Video Tour)", category: "Residential", imageSrc: "/projects/res2.jpg", videoSrc: "/projects/VID-20251130-WA0001.mp4" },
-    { title: "5-Star Hotel Renovation", category: "Hotel", imageSrc: "/projects/IMG-20251130-WA0002.jpg" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/VID-20251130-WA0002.mp4" },
-    { title: "Estate Development Phase 1", category: "Construction", imageSrc: "/projects/IMG-20251130-WA0005.jpg" },
-    { title: "Cladding Installation", category: "Cladding", imageSrc: "/projects/IMG-20251130-WA0006.jpg" },
-    { title: "Warehouse Construction", category: "Construction", imageSrc: "/projects/IMG-20251130-WA0008.jpg" },
-    { title: "Mall Interior Cladding", category: "Cladding", imageSrc: "/projects/IMG-20251130-WA0009.jpg" },
-    { title: "Apartment Renovation", category: "Renovation", imageSrc: "/projects/IMG-20251202-WA0006.jpg" },
-    { title: "Hospital Renovation", category: "Renovation", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.11.17_fff1a717.jpg" },
-    { title: "Luxury Residential Building", category: "Residential", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.16.17_916e2234.jpg" },
-    { title: "Modern Duplex (Video Tour)", category: "Residential", imageSrc: "/projects/res2.jpg", videoSrc: "/projects/VID-20251130-WA0009.mp4" },
-    { title: "5-Star Hotel Renovation", category: "Hotel", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.42_0f11f8f1.jpg" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/VID-20251130-WA0011.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/VID-20251130-WA0012.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 09.22.59_5b0facec.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 09.22.59_abe6d118.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.03.48_02a845f5.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.11.27_6d1b53ac.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.12.35_4d4a98bf.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.48.41_9d428b51.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 12.49.28_1c6654e9.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 13.03.10_247c082b.mp4" },
-    { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 13.04.25_4d3d264d.mp4" },
-    { title: "Estate Development Phase 1", category: "Construction", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.44_3da46350.jpg" },
-    { title: "Cladding Installation", category: "Cladding", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.45_56083dca.jpg" },
-    { title: "Warehouse Construction", category: "Construction", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.49_219bac9d.jpg" },
-    { title: "Mall Interior Cladding", category: "Cladding", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.24.30_d8cf2518.jpg" },
-    { title: "Apartment Renovation", category: "Renovation", imageSrc: "/projects/IMG-20251202-WA0006.jpg" },
-    { title: "Hospital Renovation", category: "Renovation", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.11.17_fff1a717.jpg" },
-  ];
+const allProjects: Project[] = [
+  { title: "Luxury Residential Building", category: "Residential", imageSrc: "/projects/IMG-20251130-WA0007.jpg" },
+  { title: "Modern Duplex (Video Tour)", category: "Residential", imageSrc: "/projects/res2.jpg", videoSrc: "/projects/VID-20251130-WA0001.mp4" },
+  { title: "5-Star Hotel Renovation", category: "Hotel", imageSrc: "/projects/IMG-20251130-WA0002.jpg" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/VID-20251130-WA0002.mp4" },
+  { title: "Estate Development Phase 1", category: "Construction", imageSrc: "/projects/IMG-20251130-WA0005.jpg" },
+  { title: "Cladding Installation", category: "Cladding", imageSrc: "/projects/IMG-20251130-WA0006.jpg" },
+  { title: "Warehouse Construction", category: "Construction", imageSrc: "/projects/IMG-20251130-WA0008.jpg" },
+  { title: "Mall Interior Cladding", category: "Cladding", imageSrc: "/projects/IMG-20251130-WA0009.jpg" },
+  { title: "Apartment Renovation", category: "Renovation", imageSrc: "/projects/IMG-20251202-WA0006.jpg" },
+  { title: "Hospital Renovation", category: "Renovation", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.11.17_fff1a717.jpg" },
+  { title: "Luxury Residential Building", category: "Residential", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.16.17_916e2234.jpg" },
+  { title: "Modern Duplex (Video Tour)", category: "Residential", imageSrc: "/projects/res2.jpg", videoSrc: "/projects/VID-20251130-WA0009.mp4" },
+  { title: "5-Star Hotel Renovation", category: "Hotel", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.42_0f11f8f1.jpg" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/VID-20251130-WA0011.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/VID-20251130-WA0012.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 09.22.59_5b0facec.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 09.22.59_abe6d118.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.03.48_02a845f5.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.11.27_6d1b53ac.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.12.35_4d4a98bf.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 10.48.41_9d428b51.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 12.49.28_1c6654e9.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 13.03.10_247c082b.mp4" },
+  { title: "Suite Interior Upgrade (Time-lapse)", category: "Hotel", imageSrc: "/projects/hotel2.jpg", videoSrc: "/projects/WhatsApp Video 2025-11-30 at 13.04.25_4d3d264d.mp4" },
+  { title: "Estate Development Phase 1", category: "Construction", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.44_3da46350.jpg" },
+  { title: "Cladding Installation", category: "Cladding", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.45_56083dca.jpg" },
+  { title: "Warehouse Construction", category: "Construction", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.20.49_219bac9d.jpg" },
+  { title: "Mall Interior Cladding", category: "Cladding", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.24.30_d8cf2518.jpg" },
+  { title: "Apartment Renovation", category: "Renovation", imageSrc: "/projects/IMG-20251202-WA0006.jpg" },
+  { title: "Hospital Renovation", category: "Renovation", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.11.17_fff1a717.jpg" },
+];
 
+export default function Page() {
   const categories = ["ALL", "Residential", "Hotel", "Construction", "Cladding", "Renovation"];
   const [activeCategory, setActiveCategory] = useState("ALL");
-  const [visibleProjects, setVisibleProjects] = useState<any[]>([]);
+  const [visibleProjects, setVisibleProjects] = useState<Project[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
   const ITEMS_PER_LOAD = 12;

@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function Home() {
 const router = useRouter();
@@ -31,29 +31,13 @@ const router = useRouter();
 
   // Refs for background slide movement
   const previousIndexRef = useRef(0);
-  const slideRefs = useRef([]);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Transition constants
   const SLIDE_DURATION = 1000; // Background slide time
   const TEXT_TRANSITION_DURATION = 700; // Text element slide in time
 
-  const changeSlide = (newIndex, direction) => {
-    if (isAnimating || newIndex === currentIndex) return;
-
-    setIsAnimating(true);
-    previousIndexRef.current = currentIndex;
-
-    // 1. Start Text Exit Animation (Text slides out quickly)
-    setShowTextContent(false);
-
-    // 2. Wait for text exit, then trigger background slide
-    // Start background slide halfway through text exit for smoother overlap
-    setTimeout(() => {
-        performSlideTransition(newIndex, direction);
-    }, TEXT_TRANSITION_DURATION / 2); 
-  };
-
-  const performSlideTransition = (newIndex, dir) => {
+  const performSlideTransition = useCallback((newIndex: number, dir: number) => {
     const currentEl = slideRefs.current[newIndex];
     const prevEl = slideRefs.current[previousIndexRef.current];
 
@@ -64,15 +48,15 @@ const router = useRouter();
 
       // Incoming slide starts off-screen
       currentEl.style.transform = `translateX(${dir * 100}%)`;
-      currentEl.style.zIndex = 2;
-      currentEl.style.opacity = 1;
+      currentEl.style.zIndex = '2';
+      currentEl.style.opacity = '1';
 
       // Outgoing slide is centered
       prevEl.style.transform = 'translateX(0%)';
-      prevEl.style.zIndex = 1;
+      prevEl.style.zIndex = '1';
       
       // Force Reflow
-      currentEl.offsetHeight; 
+      void currentEl.offsetHeight; 
 
       // --- Animation Phase ---
       const transitionStyle = `transform ${SLIDE_DURATION}ms cubic-bezier(0.4, 0.0, 0.2, 1)`;
@@ -97,20 +81,36 @@ const router = useRouter();
         // 3. Reset styles for non-active slides
         slideRefs.current.forEach((el, idx) => {
           if (idx !== newIndex && el) {
-            el.style.zIndex = 0;
-            el.style.opacity = 0;
+            el.style.zIndex = '0';
+            el.style.opacity = '0';
             el.style.transition = 'none';
             el.style.transform = 'translateX(0)';
           }
         });
       }, SLIDE_DURATION);
     }
-  };
+  }, []);
 
-  const nextSlide = () => {
+  const changeSlide = useCallback((newIndex: number, direction: number) => {
+    if (isAnimating || newIndex === currentIndex) return;
+
+    setIsAnimating(true);
+    previousIndexRef.current = currentIndex;
+
+    // 1. Start Text Exit Animation (Text slides out quickly)
+    setShowTextContent(false);
+
+    // 2. Wait for text exit, then trigger background slide
+    // Start background slide halfway through text exit for smoother overlap
+    setTimeout(() => {
+        performSlideTransition(newIndex, direction);
+    }, TEXT_TRANSITION_DURATION / 2); 
+  }, [isAnimating, currentIndex, performSlideTransition]);
+
+  const nextSlide = useCallback(() => {
     const newIndex = (currentIndex + 1) % slides.length;
     changeSlide(newIndex, 1);
-  };
+  }, [currentIndex, slides.length, changeSlide]);
 
   const prevSlide = () => {
     const newIndex = (currentIndex - 1 + slides.length) % slides.length;
@@ -125,7 +125,7 @@ const router = useRouter();
       }
     }, 6000);
     return () => clearInterval(timer);
-  }, [currentIndex, isAnimating]);
+  }, [currentIndex, isAnimating, nextSlide]);
 
   const active = slides[currentIndex];
 
@@ -159,12 +159,12 @@ const router = useRouter();
         {slides.map((slide, index) => (
           <div
             key={index}
-            ref={(el) => (slideRefs.current[index] = el)}
+            ref={(el) => { slideRefs.current[index] = el; }}
             className="absolute inset-0 bg-cover bg-center w-full h-full will-change-transform"
             style={{ 
               backgroundImage: `url('${slide.url}')`,
-              opacity: index === 0 ? 1 : 0, 
-              zIndex: index === currentIndex ? 2 : 0,
+              opacity: index === 0 ? '1' : '0', 
+              zIndex: index === currentIndex ? '2' : '0',
               transform: 'translateX(0)' 
             }}
           >

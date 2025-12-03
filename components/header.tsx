@@ -1,33 +1,23 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 // Simple SVG Icons for Menu and Close
-const MenuIcon = (props) => (
+const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
   </svg>
 );
 
-const CloseIcon = (props) => (
+const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
-// Helper component to replace Next.js Image for a runnable environment
-const PlaceholderImage = ({ src, alt, className, onClick }) => (
-  // Using a standard img tag with a fallback/placeholder URL
-  <img 
-    src={src} 
-    alt={alt} 
-    className={className} 
-    onClick={onClick}
-    // Added style to ensure image sizing works correctly without Next.js Image component
-    style={{ objectFit: 'cover' }}
-  />
-);
-
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   // Define navigation links
   const navLinks = [
@@ -38,15 +28,15 @@ export default function Header() {
     { href: "/contact-us", label: "Contact Us" },
   ];
 
-  const handleLinkClick = (href) => {
+  const handleLinkClick = (href: string) => {
     setIsMenuOpen(false); // Close menu on navigation
     // Use standard window navigation instead of Next.js router
-    window.location.href = href;
+    router.push(href);
   }
   
   // Handles the logo click for navigation to home
   const handleLogoClick = () => {
-    window.location.href = "/";
+    router.push("/");
   }
 
   return (
@@ -59,9 +49,11 @@ export default function Header() {
           className="flex items-center gap-5"
         >
           {/* Using PlaceholderImage component */}
-          <PlaceholderImage
+          <Image
             src="/IMG-20251019-WA0041.jpg"
             alt="efemena-logo"
+            width={128} // Corresponds to md:w-32 (128px)
+            height={48} //  Adjust height as needed for aspect ratio
             className="w-20 sm:w-28 md:w-32 h-auto cursor-pointer"
             onClick={handleLogoClick}
           />
@@ -75,17 +67,21 @@ export default function Header() {
           {/* Use standard <a> tag instead of Next.js Link */}
           <a href="#" aria-label="LinkedIn">
             {/* Using placeholder for social icons */}
-            <PlaceholderImage
+            <Image
               src="/linkedin-logo.svg"
               alt="linkedin"
+              width={32}
+              height={32}
               className="w-8 h-8"
             />
           </a>
           {/* Use standard <a> tag instead of Next.js Link */}
           <a href="#" aria-label="Instagram">
-            <PlaceholderImage
+            <Image
               src="/instagram-logo.svg"
               alt="instagram"
+              width={32}
+              height={32}
               className="w-8 h-8"
             />
           </a>
