@@ -418,7 +418,7 @@ export default function Home() {
                 </div>
 
                 <div className="p-4 flex flex-col gap-2">
-                  <h2 className="text-lg font-bold">{project.title}</h2>
+                  <h2 className="text-lg text-black font-bold">{project.title}</h2>
                   <p className="text-sm text-gray-600 line-clamp-2">
                     {project.description}
                   </p>
