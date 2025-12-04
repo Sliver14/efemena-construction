@@ -60,17 +60,17 @@ export const metadata: Metadata = {
   // OPEN GRAPH (Facebook, Instagram, LinkedIn)
   // ====================
   openGraph: {
-    title: "Efemena Construction — Professional Building & Construction Services",
+    title: "Efemena Construction and Cladding — Professional Building & Construction Services",
     description:
       "We provide world-class construction services for homes, offices, hotels, and large-scale projects across Nigeria.",
     url: "https://efemenaconstruction.com",
     siteName: "Efemena Construction",
     images: [
       {
-        url: "/banner.jpg", // ⭐ Add banner image (1200 x 630 recommended)
+        url: "/IMG-20251019-WA0041.jpg", // ⭐ Add banner image (1200 x 630 recommended)
         width: 1200,
         height: 630,
-        alt: "Efemena Construction — Professional Building Services",
+        alt: "Efemena Construction and Cladding — Professional Building Services",
       },
     ],
     locale: "en_US",
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
       "@type": "Organization",
       name: "Efemena Construction",
       url: "https://efemenaconstruction.com",
-      logo: "/public/IMG-20251019-WA0041.jpg",
+      logo: "/https://efemenaconstruction.com/logo.png",
       description:
         "Professional building contractor offering architecture, construction, project management, and renovation services.",
       address: {
