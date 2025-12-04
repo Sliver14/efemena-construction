@@ -80,7 +80,9 @@ export default function Header() {
             />
           </a>
           {/* Use standard <a> tag instead of Next.js Link */}
-          <a href="#" aria-label="Instagram">
+          <a 
+          target="_blank"
+          href="https://www.instagram.com/godsfavourgeorge20" aria-label="Instagram">
             <Image
               src="/instagram-logo.svg"
               alt="instagram"

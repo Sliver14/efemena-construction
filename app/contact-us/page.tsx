@@ -10,8 +10,6 @@ import {
   MessageCircle,
   Facebook,
   Instagram,
-  Linkedin,
-  Twitter,
 } from "lucide-react";
 
 // ----------------------
@@ -135,11 +133,11 @@ function Page() {
 
   // SOCIAL MEDIA LINKS
   const socialData = [
-    { icon: Facebook, href: "https://facebook.com/efemenaconstruction" },
-    { icon: Instagram, href: "https://instagram.com/efemenaconstruction" },
+    { icon: Facebook, href: "https://web.facebook.com/profile.php?id=61581173979323" },
+    { icon: Instagram, href: "https://www.instagram.com/godsfavourgeorge20" },
     // { icon: Linkedin, href: "https://linkedin.com/company/efemena-construction" },
     // { icon: Twitter, href: "https://twitter.com/efemena_const" },
-    { image: "/tik-tok.png", href: "https://tiktok.com/@efemenaconstruction" }, // TikTok (Local Image)
+    { image: "/tik-tok.png", href: "https://www.tiktok.com/@efemena.construct" }, // TikTok (Local Image)
   ];
 
   return (
