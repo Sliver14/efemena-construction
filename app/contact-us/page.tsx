@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import Image from "next/image";
 import {
   MapPin,
@@ -16,7 +17,19 @@ import {
 // ----------------------
 // CONTACT DETAIL ITEM
 // ----------------------
-const ContactDetail = ({ icon: Icon, title, content, link }) => (
+type ContactDetailProps = {
+  icon: React.ElementType;
+  title: string;
+  content: React.ReactNode;
+  link?: string;
+};
+
+const ContactDetail: React.FC<ContactDetailProps> = ({
+  icon: Icon,
+  title,
+  content,
+  link,
+}) => (
   <div className="flex items-start p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
     <div
       className={`shrink-0 p-3 rounded-full ${
@@ -53,7 +66,17 @@ const ContactDetail = ({ icon: Icon, title, content, link }) => (
 // SOCIAL ICON ITEM
 // Supports both: icon OR image
 // ----------------------
-const SocialIcon = ({ icon: Icon, href, image }) => (
+type SocialIconProps = {
+  icon?: React.ElementType;
+  href: string;
+  image?: string;
+};
+
+const SocialIcon: React.FC<SocialIconProps> = ({
+  icon: Icon,
+  href,
+  image,
+}) => (
   <a
     href={href}
     target="_blank"
@@ -69,9 +92,9 @@ const SocialIcon = ({ icon: Icon, href, image }) => (
         height={22}
         className="object-contain"
       />
-    ) : (
+    ) : Icon ? (
       <Icon size={22} />
-    )}
+    ) : null}
   </a>
 );
 
@@ -195,12 +218,7 @@ function Page() {
         </div>
       </div>
 
-      {/* FOOTER */}
-      <div className="w-full bg-[#543e36] text-white py-6 text-center shadow-inner">
-        <p className="text-sm opacity-70">
-          © 2025 Efemena Construction & Cladding. All rights reserved.
-        </p>
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 // import MediaContent from "./MediaContent"; // <-- keep your MediaContent component in a separate file or same file
 
 // ──────────────────────────────────────────────────────────────
@@ -183,7 +184,10 @@ const allProjects: Project[] = [
   { title: "Hospital Renovation", category: "Renovation", imageSrc: "/projects/WhatsApp Image 2025-11-30 at 09.11.17_fff1a717.jpg" },
 ];
 
+import { useRouter } from "next/navigation";
+
 export default function Page() {
+  const router = useRouter();
   const categories = ["ALL", "Residential", "Hotel", "Construction", "Cladding", "Renovation"];
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [visibleProjects, setVisibleProjects] = useState<Project[]>([]);
