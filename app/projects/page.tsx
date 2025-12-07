@@ -246,7 +246,7 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-white font-alilato">
+    <div className="bg-white">
       <Header />
 
       {/* HERO */}
@@ -263,7 +263,7 @@ export default function Page() {
         <h2 className="text-2xl md:text-4xl font-bold text-[#543e36] mb-10">FEATURED PROJECTS</h2>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap gap-6 mb-12 text-black/60 font-semibold">
+        <div className="flex flex-wrap gap-6 mb-12 text-black/60 font-normal">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -273,7 +273,7 @@ export default function Page() {
                 setVisibleProjects([]);
                 setHasMore(true);
               }}
-              className={`transition ${activeCategory === cat ? "text-[#543e36] font-bold underline" : "hover:text-[#543e36]"}`}
+              className={`transition ${activeCategory === cat ? "text-[#543e36] font-medium underline" : "hover:text-[#543e36]"}`}
             >
               {cat.toUpperCase()}
             </button>
@@ -300,7 +300,7 @@ export default function Page() {
                 {/* Caption */}
                 <div className="absolute inset-x-0 bottom-0 p-5 text-white bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none z-20">
                 <p className="text-sm uppercase font-semibold opacity-80">{project.category}</p>
-                <h3 className="text-lg md:text-xl font-bold mt-1 leading-snug">{project.title}</h3>
+                <p className="text-base md:text-md font-medium mt-1 leading-snug">{project.title}</p>
                 </div>
             </div>
             );

@@ -57,7 +57,7 @@ export default function Header() {
             className="w-16 sm:w-20 md:w-32 h-auto cursor-pointer"
             onClick={handleLogoClick}
           />
-          <h1 className="hidden md:block text-black text-xl font-sans md:text-2xl font-extrabold tracking-tight">
+          <h1 className="hidden md:block text-black text-xl md:text-2xl font-extrabold tracking-tight">
             EFEMENA CONSTRUCTION
           </h1>
         </div>

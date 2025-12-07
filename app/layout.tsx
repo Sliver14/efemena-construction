@@ -1,24 +1,17 @@
 import type { Metadata } from "next";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
-import localFont from "next/font/local";
 
-// Custom Fonts
-const gothic = localFont({
-  src: [
-    { path: "../public/fonts/Engravers' Gothic Regular.otf", weight: "400" },
-    { path: "../public/fonts/Engravers' Gothic Regular.otf", weight: "700" },
-  ],
-  variable: "--font-gothic",
+const inter = Inter({
+  subsets: ["latin"],
   display: "swap",
+  variable: "--font-inter",
 });
 
-const alilato = localFont({
-  src: [
-    { path: "../public/fonts/fonnts.com-Alilato_Extra_Light.ttf", weight: "400" },
-    { path: "../public/fonts/fonnts.com-Alilato_Extra_Light.ttf", weight: "600" },
-  ],
-  variable: "--font-alilato",
+const montserrat = Montserrat({
+  subsets: ["latin"],
   display: "swap",
+  variable: "--font-montserrat",
 });
 
 // =========================
@@ -136,7 +129,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${gothic.variable} ${alilato.variable} antialiased overflow-x-hidden`}
+        className={`${inter.variable} ${montserrat.variable} antialiased overflow-x-hidden`}
       >
         {children}
       </body>

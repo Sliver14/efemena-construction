@@ -10,19 +10,19 @@ export default function Home() {
 
   const featuredProjects = [
     {
-      title: "Lagos Office Complex",
+      title: "Modern Bungalow",
       description:
         "Construction of a modern 10-story office tower with advanced cladding.",
       imageSrc: "/projects/IMG-20251202-WA0006.jpg",
     },
     {
-      title: "Residential Towers",
+      title: "Premium Modern Smart-Home",
       description:
         "Full design and construction of twin luxury residential skyscrapers.",
       imageSrc: "/projects/IMG-20251130-WA0006.jpg",
     },
     {
-      title: "Industrial Warehouse",
+      title: "Urban Hotel",
       description:
         "Built-to-suit logistics warehouse, covering over 50,000 square meters.",
       imageSrc:
@@ -66,7 +66,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col bg-[#ececec] min-h-screen w-full font-alilato">
+    <div className="flex flex-col bg-[#ececec] min-h-screen w-full">
 
       {/* Header */}
       <Header />
@@ -89,23 +89,22 @@ export default function Home() {
           {/* Left Content */}
           <div className="flex flex-col items-start text-black gap-5 w-full">
             <div className="relative group w-full">
-              <h1 className="text-[#543e36] text-3xl md:text-4xl">About</h1>
+              <h1 className="text-[#543e36] text-3xl font-medium md:text-4xl">About</h1>
               <div className="absolute bottom-0 left-0 h-px bg-[#543e36]/50 w-1/2"></div>
             </div>
 
             <h2 className="text-base md:text-lg leading-relaxed">
-              Efemena Construction & Cladding Ltd is a leading building and
-              civil engineering contracting firm in Nigeria, with over 90
-              years of experience and a solid reputation built on its
-              history, professionalism and commitment to service excellence.
+              Efemena Construction & Cladding Ltd is a leading building and civil 
+              engineering contracting firm in Nigeria, recognized for its strong heritage, 
+              professional expertise, and unwavering commitment to service excellence.
             </h2>
 
-            <div className="relative group">
+            {/* <div className="relative group">
               <button className="text-lg md:text-xl font-bold">
                 Learn more
               </button>
               <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black group-hover:w-full transition-all duration-300"></div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Image */}
@@ -144,7 +143,7 @@ export default function Home() {
           {/* Text */}
           <div className="flex flex-col items-start text-black gap-5 w-full">
             <div className="relative group w-full">
-              <h1 className="text-[#543e36] text-3xl md:text-4xl">
+              <h1 className="text-[#543e36] font-medium text-3xl md:text-4xl">
                 Our Services
               </h1>
               <div className="absolute bottom-0 left-0 h-px bg-[#543e36]/50 w-1/2"></div>
@@ -157,7 +156,7 @@ export default function Home() {
 
             {["Construction", "Cladding", "Renovation"].map((service) => (
               <div className="relative group" key={service}>
-                <button className="text-xl font-extrabold">{service}</button>
+                <button className="text-xl font-medium">{service}</button>
                 <div className="absolute bottom-0 left-0 h-0.5 w-1/4 bg-black group-hover:w-full transition-all duration-300"></div>
               </div>
             ))}

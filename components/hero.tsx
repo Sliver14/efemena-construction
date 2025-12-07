@@ -21,7 +21,7 @@ const router = useRouter();
       type: "image",
       url: "/projects/WhatsApp Image 2025-11-30 at 09.20.44_3da46350.jpg",
       title: "BUILDING AFRICA'S LANDMARK PROJECTS",
-      subtitle: "Trusted for over 90 years.",
+      subtitle: "Built on trust and excellence.",
     },
   ];
 
@@ -154,7 +154,7 @@ const router = useRouter();
   return (
     <div 
     id="hero"
-    className="relative flex font-sans justify-center uppercase flex-col w-full h-[60vh] md:min-h-screen overflow-hidden bg-black text-white">
+    className="relative flex justify-center uppercase flex-col w-full h-[60vh] md:min-h-screen overflow-hidden bg-black text-white">
       
       {/* Background Slides Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
